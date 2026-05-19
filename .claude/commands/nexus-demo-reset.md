@@ -7,7 +7,7 @@ allowed-tools: Bash(bash:*), Bash(git checkout:*), Bash(git stash:*), Bash(git b
 Run the demo-reset script:
 
 ```bash
-bash scripts/demo-reset.sh
+bash .claude/commands/demo-reset.sh
 ```
 
 Output the result and stop.

@@ -7,7 +7,7 @@ allowed-tools: Bash(bash:*)
 Run the capture script:
 
 ```bash
-bash scripts/capture.sh "$ARGUMENTS"
+bash .claude/commands/capture.sh "$ARGUMENTS"
 ```
 
 Output the one-line result from the script and stop. No analysis, no follow-up.

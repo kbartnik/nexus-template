@@ -7,7 +7,7 @@ allowed-tools: Bash(bash:*), Bash(git checkout:*), Bash(git stash:*), Bash(git b
 Run the demo-cleanup script:
 
 ```bash
-bash scripts/demo-cleanup.sh
+bash .claude/commands/demo-cleanup.sh
 ```
 
 Output the result and stop.

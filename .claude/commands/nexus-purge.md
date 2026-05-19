@@ -7,7 +7,7 @@ allowed-tools: Bash(bash:*)
 Run the purge script to remove all default template content and reset the vault to a blank state ready for real use.
 
 ```bash
-bash scripts/nexus-purge.sh
+bash .claude/commands/nexus-purge.sh
 ```
 
 This removes the six default content files (wiki pages, ADR, investigation, inbox seed), resets `wiki/index.md`, `wiki/log.md`, and `context.md` to blank templates, and commits the result.

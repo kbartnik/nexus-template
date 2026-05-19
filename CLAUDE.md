@@ -241,7 +241,7 @@ export NEXUS_VAULT_PATH="/c/Users/you/path/to/vault"
 
 ## Scripts and Hooks
 
-Mechanical operations that don't require LLM reasoning are implemented as bash scripts in `scripts/`.
+Mechanical operations that don't require LLM reasoning are implemented as bash scripts stored alongside their relevant commands (`.claude/commands/*.sh`) and skills (`.claude/skills/session-context/*.sh`).
 
 | Script | Purpose | Called by |
 |--------|---------|-----------|

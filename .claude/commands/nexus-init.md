@@ -21,17 +21,17 @@ Note whether NEXUS_VAULT_PATH was set explicitly or fell back to CWD.
 ## Step 3: Make scripts executable
 
 ```bash
-chmod +x "$VAULT_ROOT/scripts/"*.sh 2>/dev/null || true
+chmod +x "$VAULT_ROOT/.claude/commands/"*.sh "$VAULT_ROOT/.claude/skills/session-context/"*.sh 2>/dev/null || true
 ```
 
 ## Step 4: Verify scripts exist
 
-Check that `scripts/` contains `.sh` files. Report the count.
+Check that `.claude/commands/` and `.claude/skills/session-context/` contain `.sh` files. Report the count.
 
 ## Step 5: Test a script
 
 ```bash
-bash "$VAULT_ROOT/scripts/inbox-list.sh"
+bash "$VAULT_ROOT/.claude/commands/inbox-list.sh"
 ```
 
 If this succeeds, scripts are working.

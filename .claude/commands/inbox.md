@@ -7,7 +7,7 @@ allowed-tools: Bash(bash:*)
 Run the inbox-list script:
 
 ```bash
-bash scripts/inbox-list.sh
+bash .claude/commands/inbox-list.sh
 ```
 
 Output the result exactly. No commentary.
