@@ -1,0 +1,111 @@
+{
+  "nodes": [
+    {
+      "id": "a1b2c3d4e5f67890",
+      "type": "text",
+      "x": 350,
+      "y": 0,
+      "width": 220,
+      "height": 100,
+      "color": "5",
+      "text": "## You\n\n`/capture` · `/adr` · `/read` · `/query`"
+    },
+    {
+      "id": "b2c3d4e5f6789012",
+      "type": "text",
+      "x": 330,
+      "y": 180,
+      "width": 260,
+      "height": 160,
+      "color": "3",
+      "text": "## inbox/\n**Zone 1a — Capture**\n\nDrop anything here.\nNo classification needed.\nClaude never edits files here."
+    },
+    {
+      "id": "c3d4e5f678901234",
+      "type": "text",
+      "x": 30,
+      "y": 440,
+      "width": 280,
+      "height": 170,
+      "color": "2",
+      "text": "## archive/\n**Zone 1b — Source**\n\nProcessed source material.\nClaude moves files here.\nNever edited after ingestion.\n\n`clippings/` `papers/` `books/`\n`daily/` `ideas/` `docs/`"
+    },
+    {
+      "id": "d4e5f67890123456",
+      "type": "text",
+      "x": 380,
+      "y": 440,
+      "width": 260,
+      "height": 170,
+      "color": "4",
+      "text": "## wiki/\n**Zone 2 — Knowledge**\n\nClaude-owned knowledge graph.\nConcepts, entities, syntheses.\nIndex and log maintained automatically."
+    },
+    {
+      "id": "e5f6789012345678",
+      "type": "text",
+      "x": 720,
+      "y": 180,
+      "width": 280,
+      "height": 180,
+      "color": "6",
+      "text": "## dev/\n**Zone 3 — Work**\n\nYou drive, Claude assists.\nNo edits without approval.\n\n`adr/` `debriefs/` `projects/`\n`investigations/` `learning/`"
+    }
+  ],
+  "edges": [
+    {
+      "id": "1234567890abcdef",
+      "fromNode": "a1b2c3d4e5f67890",
+      "fromSide": "bottom",
+      "toNode": "b2c3d4e5f6789012",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "/capture"
+    },
+    {
+      "id": "234567890abcdef0",
+      "fromNode": "b2c3d4e5f6789012",
+      "fromSide": "bottom",
+      "toNode": "c3d4e5f678901234",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "move (auto-classified)"
+    },
+    {
+      "id": "34567890abcdef01",
+      "fromNode": "b2c3d4e5f6789012",
+      "fromSide": "bottom",
+      "toNode": "d4e5f67890123456",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "synthesize → wiki pages"
+    },
+    {
+      "id": "4567890abcdef012",
+      "fromNode": "a1b2c3d4e5f67890",
+      "fromSide": "right",
+      "toNode": "e5f6789012345678",
+      "toSide": "top",
+      "toEnd": "arrow",
+      "label": "/adr · /debrief · /learn"
+    },
+    {
+      "id": "567890abcdef0123",
+      "fromNode": "d4e5f67890123456",
+      "fromSide": "right",
+      "toNode": "e5f6789012345678",
+      "toSide": "bottom",
+      "toEnd": "arrow",
+      "fromEnd": "arrow",
+      "label": "[[wikilinks]]"
+    },
+    {
+      "id": "67890abcdef01234",
+      "fromNode": "c3d4e5f678901234",
+      "fromSide": "right",
+      "toNode": "d4e5f67890123456",
+      "toSide": "left",
+      "toEnd": "arrow",
+      "label": "cited as sources"
+    }
+  ]
+}
