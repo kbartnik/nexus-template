@@ -28,7 +28,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash scripts/update-inbox-count.sh 2>/dev/null || true",
+            "command": "V=${NEXUS_VAULT_PATH:-$(pwd)}; [ -f \"$V/scripts/update-inbox-count.sh\" ] && bash \"$V/scripts/update-inbox-count.sh\" 2>/dev/null; exit 0",
             "shell": "bash",
             "async": true
           }
@@ -40,7 +40,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash scripts/session-start.sh 2>/dev/null || true",
+            "command": "V=${NEXUS_VAULT_PATH:-$(pwd)}; [ -f \"$V/scripts/session-start.sh\" ] && bash \"$V/scripts/session-start.sh\" 2>/dev/null; exit 0",
             "shell": "bash"
           }
         ]
@@ -51,7 +51,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash scripts/session-end.sh 2>/dev/null || true",
+            "command": "V=${NEXUS_VAULT_PATH:-$(pwd)}; [ -f \"$V/scripts/session-end.sh\" ] && bash \"$V/scripts/session-end.sh\" 2>/dev/null; exit 0",
             "shell": "bash",
             "async": true
           }
