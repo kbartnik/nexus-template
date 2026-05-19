@@ -1,26 +1,21 @@
 ---
 description: Create a clean demo branch from demo-start — leaves real data untouched
 argument-hint: (no arguments needed)
-allowed-tools: Bash(git:*)
+allowed-tools: Bash(bash:*), Bash(pwsh:*), Bash(git checkout:*), Bash(git stash:*), Bash(git branch:*)
 ---
 
-Resolve the vault root: `VAULT_ROOT="${NEXUS_VAULT_PATH:-$(pwd)}"` — uses the env var if set, otherwise the current working directory. On Windows without Git Bash/WSL, set `NEXUS_VAULT_PATH` explicitly.
+Run the demo-reset script to create an isolated demo branch.
 
-Create an isolated demo branch from the `demo-start` tag. Real data on `main` is never touched.
+Detect platform and run:
 
+**macOS / Linux / Git Bash:**
 ```bash
-cd "$VAULT_ROOT"
-
-# Stash any uncommitted work on the current branch
-git stash --include-untracked
-
-# Delete existing demo branch if present, then create fresh from tag
-git branch -D demo 2>/dev/null || true
-git checkout -b demo demo-start
+bash scripts/demo-reset.sh
 ```
 
-Obsidian now shows the clean demo vault: sample wiki pages, inbox seed present, context blanked.
+**Windows (PowerShell):**
+```powershell
+& .\scripts\demo-reset.ps1
+```
 
-Confirm in one line: `Demo branch ready. Run /demo-cleanup when done.`
-
-> Note: If the `demo-start` tag doesn't exist, run `git tag demo-start` from a clean vault state first.
+The script stashes any uncommitted work, deletes any existing `demo` branch, and creates a fresh one from `demo-start`. Output the script result and stop.

@@ -17,5 +17,60 @@
       "Bash(git push:*)",
       "Bash(curl:*)"
     ]
+  },
+  "hooks": {
+    "PostToolUse": [
+      {
+        "matcher": "Write|Bash",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash scripts/update-inbox-count.sh 2>/dev/null || true",
+            "shell": "bash",
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "try { & .\\scripts\\update-inbox-count.ps1 } catch {}",
+            "shell": "powershell",
+            "async": true
+          }
+        ]
+      }
+    ],
+    "SessionStart": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash scripts/session-start.sh 2>/dev/null || true",
+            "shell": "bash"
+          },
+          {
+            "type": "command",
+            "command": "try { & .\\scripts\\session-start.ps1 } catch {}",
+            "shell": "powershell"
+          }
+        ]
+      }
+    ],
+    "Stop": [
+      {
+        "hooks": [
+          {
+            "type": "command",
+            "command": "bash scripts/session-end.sh 2>/dev/null || true",
+            "shell": "bash",
+            "async": true
+          },
+          {
+            "type": "command",
+            "command": "try { & .\\scripts\\session-end.ps1 } catch {}",
+            "shell": "powershell",
+            "async": true
+          }
+        ]
+      }
+    ]
   }
 }

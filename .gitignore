@@ -6,3 +6,4 @@
 .obsidian/app.json
 *.swp
 *.swo
+.claude/settings.local.json

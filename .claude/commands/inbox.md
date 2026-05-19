@@ -1,25 +1,21 @@
 ---
 description: List everything sitting in inbox/ — one line per file
 argument-hint: (no arguments needed)
-allowed-tools: Bash(find:*), Bash(ls:*), Bash(wc:*), Bash(echo:*)
+allowed-tools: Bash(bash:*), Bash(pwsh:*)
 ---
 
-Resolve the vault root: `VAULT_ROOT="${NEXUS_VAULT_PATH:-$(pwd)}"` — uses the env var if set, otherwise the current working directory. On Windows without Git Bash/WSL, set `NEXUS_VAULT_PATH` explicitly.
+Run the inbox-list script to show all files in `inbox/`.
 
-List all files in `$VAULT_ROOT/inbox/` — all types, not just `.md`.
+Detect platform and run:
 
+**macOS / Linux / Git Bash:**
 ```bash
-find "$VAULT_ROOT/inbox" -maxdepth 1 -type f | sort
+bash scripts/inbox-list.sh
 ```
 
-Output one line per file — filename only, no paths:
-```
-Inbox: N items
-- filename-one.md
-- report.pdf
-- note.txt
+**Windows (PowerShell):**
+```powershell
+& .\scripts\inbox-list.ps1
 ```
 
-If inbox is empty: `Inbox: empty`
-
-Do not read file contents. Do not analyze. Do not suggest actions unless inbox has more than 10 items, in which case add one line: `Run /ingest to clear the queue.`
+Output the script result exactly. Do not read file contents or add commentary.

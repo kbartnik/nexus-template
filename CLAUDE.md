@@ -239,6 +239,32 @@ export NEXUS_VAULT_PATH="/c/path/to/this/vault"
 
 ---
 
+## Scripts and Hooks
+
+Mechanical operations that don't require LLM reasoning are implemented as shell scripts in `scripts/`. Each has a bash (`.sh`) and PowerShell (`.ps1`) version.
+
+| Script | Purpose | Called by |
+|--------|---------|-----------|
+| `capture` | Append thought to inbox, update count | `/capture` command |
+| `inbox-list` | List all inbox files | `/inbox` command |
+| `update-inbox-count` | Recount inbox, update context.md | PostToolUse hook |
+| `session-start` | Read context.md, emit briefing as additionalContext | SessionStart hook |
+| `session-end` | Update last-session date and inbox-count | Stop hook + `/wrap` |
+| `demo-reset` | Create demo branch from demo-start tag | `/demo-reset` command |
+| `demo-cleanup` | Return to main, delete demo branch | `/demo-cleanup` command |
+
+**Lifecycle hooks** (configured in `.claude/settings.json`):
+
+| Hook | Event | Effect |
+|------|-------|--------|
+| PostToolUse (Write\|Bash) | After any write or bash | inbox-count stays current automatically |
+| SessionStart | Session open | Briefing injected into model context before first response |
+| Stop | Session close | last-session date and inbox-count updated automatically |
+
+Each hook has both a bash and PowerShell variant. The wrong-platform one fails silently.
+
+---
+
 ## Extensibility
 
 To add a new area:

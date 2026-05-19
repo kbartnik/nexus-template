@@ -1,20 +1,23 @@
 ---
 description: Zero-friction inbox dump — write a thought to inbox/ without side effects
 argument-hint: <thought, URL, or note>
-allowed-tools: Bash(echo:*), Bash(date:*), Bash(ls:*), Bash(wc:*)
+allowed-tools: Bash(bash:*), Bash(pwsh:*)
 ---
 
-Resolve the vault root: `VAULT_ROOT="${NEXUS_VAULT_PATH:-$(pwd)}"` — uses the env var if set, otherwise the current working directory. On Windows without Git Bash/WSL, set `NEXUS_VAULT_PATH` explicitly.
+Run the capture script with **$ARGUMENTS** as the thought to capture.
 
-Capture **$ARGUMENTS** to the inbox. No wiki edits. No analysis. No questions. Just write and return.
+Detect platform and run:
 
-1. Get today's date: `YYYY-MM-DD`
-2. Append to `$VAULT_ROOT/inbox/YYYY-MM-DD-inbox.md` (create if it doesn't exist):
-   ```
-   - HH:MM — $ARGUMENTS
-   ```
-3. Update `inbox-count` in `$VAULT_ROOT/context.md` (count all files in `$VAULT_ROOT/inbox/`)
-4. Confirm in one line: `Captured. Inbox: N items.`
-5. Return immediately to whatever was happening before.
+**macOS / Linux / Git Bash:**
+```bash
+bash scripts/capture.sh "$ARGUMENTS"
+```
 
-That's it. Do not analyze, do not suggest follow-up actions, do not ask questions.
+**Windows (PowerShell):**
+```powershell
+& .\scripts\capture.ps1 "$ARGUMENTS"
+```
+
+To detect: try `uname 2>/dev/null` — if it returns output, use bash. Otherwise use PowerShell.
+
+The script appends the thought to `inbox/YYYY-MM-DD-inbox.md` and updates `inbox-count` in `context.md`. Output one line from the script and stop. No analysis, no follow-up.

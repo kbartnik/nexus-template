@@ -13,6 +13,7 @@
 
 | Command | What it does |
 |---------|-------------|
+| `/init` | Detect platform, validate scripts, store shell preference — run once after cloning |
 | `/resume` | Restore context — show last focus, next action, inbox count |
 | `/capture <thought>` | Zero-friction dump to inbox/ |
 | `/inbox` | Quick list of what's in inbox/ |
