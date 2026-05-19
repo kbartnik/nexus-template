@@ -29,6 +29,7 @@
           {
             "type": "command",
             "command": "bash scripts/update-inbox-count.sh 2>/dev/null || true",
+            "shell": "bash",
             "async": true
           }
         ]
@@ -39,7 +40,8 @@
         "hooks": [
           {
             "type": "command",
-            "command": "bash scripts/session-start.sh 2>/dev/null || true"
+            "command": "bash scripts/session-start.sh 2>/dev/null || true",
+            "shell": "bash"
           }
         ]
       }
@@ -50,6 +52,7 @@
           {
             "type": "command",
             "command": "bash scripts/session-end.sh 2>/dev/null || true",
+            "shell": "bash",
             "async": true
           }
         ]
