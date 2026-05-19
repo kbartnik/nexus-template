@@ -209,8 +209,10 @@ When the user says they're done:
 | `/debrief` | Create a pre-filled debrief / post-mortem |
 | `/cheatsheet` | Surface all commands |
 | `/wrap` | End the session — update context, log, report summary |
-| `/demo-reset` | Create a clean demo branch from demo-start tag |
-| `/demo-cleanup` | Return to main, delete demo branch |
+| `/nexus-init` | Detect platform, validate scripts, store shell config — run once after cloning |
+| `/nexus-purge` | Remove all default template content, reset to pristine vault |
+| `/nexus-demo-reset` | Create a clean demo branch from demo-start tag |
+| `/nexus-demo-cleanup` | Return to main, delete demo branch |
 
 ---
 
@@ -226,22 +228,20 @@ export NEXUS_VAULT_PATH="/path/to/this/vault"
 
 Add to `~/.zshrc` or `~/.bashrc` and restart Claude Code.
 
-**Windows:**
+**Windows (MINGW / Git for Windows):**
 
-Native cmd/PowerShell is not supported. Use one of:
-- **Git Bash** (recommended): install [Git for Windows](https://git-scm.com/download/win), then set Claude Code's shell to Git Bash
-- **WSL**: Windows Subsystem for Linux works fully
+All scripts use bash. Install [Git for Windows](https://git-scm.com/download/win) — it includes MINGW64 and Git Bash, which provides a full bash environment.
 
-Set the env var in your Git Bash profile (`~/.bashrc`):
+Set the env var in `~/.bashrc`:
 ```bash
-export NEXUS_VAULT_PATH="/c/path/to/this/vault"
+export NEXUS_VAULT_PATH="/c/Users/you/path/to/vault"
 ```
 
 ---
 
 ## Scripts and Hooks
 
-Mechanical operations that don't require LLM reasoning are implemented as shell scripts in `scripts/`. Each has a bash (`.sh`) and PowerShell (`.ps1`) version.
+Mechanical operations that don't require LLM reasoning are implemented as bash scripts in `scripts/`.
 
 | Script | Purpose | Called by |
 |--------|---------|-----------|

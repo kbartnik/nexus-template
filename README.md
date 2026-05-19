@@ -18,12 +18,9 @@ A starting point for a personal knowledge vault where Claude Code acts as a co-p
 
 ## Windows
 
-Requires **Git Bash** or **WSL** — native cmd/PowerShell is not supported (shell commands like `mv`, `find`, `grep` are unavailable there).
+Requires [Git for Windows](https://git-scm.com/download/win), which includes MINGW64/Git Bash — a full bash environment for Windows. All scripts use bash.
 
-- **Git Bash:** Install [Git for Windows](https://git-scm.com/download/win), then configure Claude Code to use Git Bash as its shell
-- **WSL:** Works fully out of the box
-
-Set the env var in your Git Bash profile (`~/.bashrc`) if needed:
+Set the env var in `~/.bashrc` if needed:
 ```bash
 export NEXUS_VAULT_PATH="/c/Users/you/path/to/vault"
 ```

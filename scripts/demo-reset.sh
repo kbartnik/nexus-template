@@ -5,4 +5,4 @@ cd "$VAULT_ROOT" || exit 1
 git stash --include-untracked 2>/dev/null || true
 git branch -D demo 2>/dev/null || true
 git checkout -b demo demo-start
-echo "Demo branch ready. Run /demo-cleanup when done."
+echo "Demo branch ready. Run /nexus-demo-cleanup when done."

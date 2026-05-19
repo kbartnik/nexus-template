@@ -13,7 +13,6 @@
 
 | Command | What it does |
 |---------|-------------|
-| `/init` | Detect platform, validate scripts, store shell preference — run once after cloning |
 | `/resume` | Restore context — show last focus, next action, inbox count |
 | `/capture <thought>` | Zero-friction dump to inbox/ |
 | `/inbox` | Quick list of what's in inbox/ |
@@ -44,9 +43,11 @@
 | `/learn <topic> [source]` | File learning notes for a topic |
 | `/review <topic>` | Synthesize all notes on a topic into a coherent understanding |
 
-## Demo
+## Nexus Vault Management
 
 | Command | What it does |
 |---------|-------------|
-| `/demo-reset` | Create a clean `demo` branch from `demo-start` — real data untouched |
-| `/demo-cleanup` | Return to `main`, restore stashed work, delete `demo` branch |
+| `/nexus-init` | Detect platform, validate scripts, store shell preference — run once after cloning |
+| `/nexus-purge` | Remove all default template content, reset to pristine vault |
+| `/nexus-demo-reset` | Create a clean `demo` branch from `demo-start` — real data untouched |
+| `/nexus-demo-cleanup` | Return to `main`, restore stashed work, delete `demo` branch |
