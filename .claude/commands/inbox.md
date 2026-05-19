@@ -4,19 +4,20 @@ argument-hint: (no arguments needed)
 allowed-tools: Bash(find:*), Bash(ls:*), Bash(wc:*), Bash(echo:*)
 ---
 
-Resolve the vault root: run `echo $NEXUS_VAULT_PATH` and store the result as `$VAULT_ROOT`. If empty, stop and tell the user to set `NEXUS_VAULT_PATH` in their shell profile.
+Resolve the vault root: `VAULT_ROOT="${NEXUS_VAULT_PATH:-$(pwd)}"` — uses the env var if set, otherwise the current working directory. On Windows without Git Bash/WSL, set `NEXUS_VAULT_PATH` explicitly.
 
-List all files in `$VAULT_ROOT/inbox/`.
+List all files in `$VAULT_ROOT/inbox/` — all types, not just `.md`.
 
 ```bash
-find "$VAULT_ROOT/inbox" -name "*.md" | sort
+find "$VAULT_ROOT/inbox" -maxdepth 1 -type f | sort
 ```
 
 Output one line per file — filename only, no paths:
 ```
 Inbox: N items
 - filename-one.md
-- filename-two.md
+- report.pdf
+- note.txt
 ```
 
 If inbox is empty: `Inbox: empty`

@@ -9,19 +9,17 @@ This skill governs how every session opens and closes. Its job is to eliminate t
 
 ## Step 0: Resolve Vault Root
 
-Before doing anything else, run:
+Before doing anything else, resolve the vault root:
 
 ```bash
-echo $NEXUS_VAULT_PATH
+VAULT_ROOT="${NEXUS_VAULT_PATH:-$(pwd)}"
 ```
 
-Store the output as `$VAULT_ROOT` for all subsequent file references in this skill.
+This uses `NEXUS_VAULT_PATH` if set, otherwise falls back to the current working directory (which is the vault root when Claude Code is opened in the vault folder).
 
-If the output is empty, stop and report:
+**On Windows without Git Bash/WSL:** The `$(pwd)` fallback may not work in cmd/PowerShell. Set `NEXUS_VAULT_PATH` explicitly in your environment variables.
 
-> **NEXUS_VAULT_PATH is not set.** Add `export NEXUS_VAULT_PATH="/path/to/your/vault"` to your shell profile (`.zshrc`, `.bashrc`), then restart Claude Code.
-
-Do not proceed with session start or end protocols until the variable resolves.
+Store the result as `$VAULT_ROOT` for all subsequent file references in this skill. Do not stop if `NEXUS_VAULT_PATH` is unset — use CWD instead.
 
 ---
 
@@ -63,7 +61,7 @@ When the user signals they're done, or when you reach a natural stopping point:
    - `current-focus`: what was actually worked on this session (1–5 words)
    - `next-action`: the single most concrete next step — action verb, specific target, no ambiguity
    - `parked-ideas`: append any new ideas parked this session (do not remove old ones)
-   - `inbox-count`: count `.md` files in `$VAULT_ROOT/inbox/` right now and update
+   - `inbox-count`: count all files in `$VAULT_ROOT/inbox/` right now and update
    - `session-count`: already incremented at start, leave as-is
    - `last-nudged-command`: already updated if nudge ran, leave as-is
 

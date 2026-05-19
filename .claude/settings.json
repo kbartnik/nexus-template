@@ -6,7 +6,11 @@
       "Bash(cat:*)",
       "Bash(ls:*)",
       "Bash(wc:*)",
-      "Bash(date:*)"
+      "Bash(date:*)",
+      "Bash(mv:*)",
+      "Bash(git checkout:*)",
+      "Bash(git stash:*)",
+      "Bash(git branch:*)"
     ],
     "deny": [
       "Bash(rm:*)",

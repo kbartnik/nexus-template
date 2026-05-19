@@ -19,6 +19,7 @@
 | `/park <idea>` | Shelve a derailing idea, return to focus |
 | `/focus` | Check current focus vs. what was planned |
 | `/next <topic>` | Break a topic into 3 concrete first steps |
+| `/wrap` | End the session — update context, log, report summary |
 | `/cheatsheet [group]` | Show this reference |
 
 ## Developer

@@ -4,7 +4,7 @@ argument-hint: <thought, URL, or note>
 allowed-tools: Bash(echo:*), Bash(date:*), Bash(ls:*), Bash(wc:*)
 ---
 
-Resolve the vault root: run `echo $NEXUS_VAULT_PATH` and store the result as `$VAULT_ROOT`. If empty, stop and tell the user to set `NEXUS_VAULT_PATH` in their shell profile.
+Resolve the vault root: `VAULT_ROOT="${NEXUS_VAULT_PATH:-$(pwd)}"` — uses the env var if set, otherwise the current working directory. On Windows without Git Bash/WSL, set `NEXUS_VAULT_PATH` explicitly.
 
 Capture **$ARGUMENTS** to the inbox. No wiki edits. No analysis. No questions. Just write and return.
 
@@ -13,7 +13,7 @@ Capture **$ARGUMENTS** to the inbox. No wiki edits. No analysis. No questions. J
    ```
    - HH:MM — $ARGUMENTS
    ```
-3. Update `inbox-count` in `$VAULT_ROOT/context.md` (count `.md` files in `$VAULT_ROOT/inbox/`)
+3. Update `inbox-count` in `$VAULT_ROOT/context.md` (count all files in `$VAULT_ROOT/inbox/`)
 4. Confirm in one line: `Captured. Inbox: N items.`
 5. Return immediately to whatever was happening before.
 

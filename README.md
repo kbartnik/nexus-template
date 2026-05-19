@@ -11,12 +11,22 @@ A starting point for a personal knowledge vault where Claude Code acts as a co-p
 1. **Clone this repo** to your local machine
 2. **Open the folder as an Obsidian vault** (File → Open Folder as Vault)
 3. **Install community plugins** listed in `.obsidian/community-plugins.json` (Obsidian will prompt)
-4. **Set the vault path** in your shell profile:
-   ```bash
-   export NEXUS_VAULT_PATH="/path/to/this/vault"
-   ```
-5. **Open Claude Code** in the vault directory — it reads `CLAUDE.md` automatically
-6. **First session:** Claude will show a blank briefing and wait for your first focus
+4. **Open Claude Code** in the vault directory — it reads `CLAUDE.md` automatically
+5. **First session:** Claude will show a blank briefing and wait for your first focus
+
+`NEXUS_VAULT_PATH` is optional on macOS/Linux/Git Bash — Claude Code falls back to the current working directory automatically. Set it explicitly only if you open Claude Code from outside the vault folder.
+
+## Windows
+
+Requires **Git Bash** or **WSL** — native cmd/PowerShell is not supported (shell commands like `mv`, `find`, `grep` are unavailable there).
+
+- **Git Bash:** Install [Git for Windows](https://git-scm.com/download/win), then configure Claude Code to use Git Bash as its shell
+- **WSL:** Works fully out of the box
+
+Set the env var in your Git Bash profile (`~/.bashrc`) if needed:
+```bash
+export NEXUS_VAULT_PATH="/c/Users/you/path/to/vault"
+```
 
 ## Zone Structure
 

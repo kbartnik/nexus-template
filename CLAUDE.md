@@ -8,7 +8,7 @@ You are operating inside an Obsidian vault powered by Claude Code. This file is 
 
 **Every session, before responding to anything else:**
 
-1. Run `echo $NEXUS_VAULT_PATH` and store the result as `$VAULT_ROOT`. If empty, stop and tell the user to set `NEXUS_VAULT_PATH` in their shell profile before continuing.
+1. Resolve the vault root: `VAULT_ROOT="${NEXUS_VAULT_PATH:-$(pwd)}"` — uses the env var if set, otherwise the current working directory. On Windows without Git Bash/WSL, `NEXUS_VAULT_PATH` must be set explicitly.
 2. Load the `session-context` skill
 3. Read `$VAULT_ROOT/context.md`
 4. Present a 3-line briefing — no preamble, no follow-up question, just stop and wait:
@@ -166,7 +166,7 @@ When the user says they're done:
    - `current-focus`: what was worked on
    - `next-action`: the single most concrete next step (action verb, specific)
    - `parked-ideas`: append any new parked ideas
-   - `inbox-count`: count `.md` files in `inbox/` and update
+   - `inbox-count`: count all files in `inbox/` and update
 2. Append a `session-end` entry to `wiki/log.md`
 3. Report a 3-line session summary: done / next / parked
 
@@ -208,19 +208,34 @@ When the user says they're done:
 | `/adr` | Create a pre-filled Architecture Decision Record |
 | `/debrief` | Create a pre-filled debrief / post-mortem |
 | `/cheatsheet` | Surface all commands |
-| `/demo-reset` | Reset vault to clean demo state |
+| `/wrap` | End the session — update context, log, report summary |
+| `/demo-reset` | Create a clean demo branch from demo-start tag |
+| `/demo-cleanup` | Return to main, delete demo branch |
 
 ---
 
 ## Setup
 
-Set `NEXUS_VAULT_PATH` in your shell profile before first use:
+**macOS / Linux / WSL / Git Bash:**
+
+`NEXUS_VAULT_PATH` is optional — if Claude Code is opened in the vault folder, it falls back to the current working directory automatically. To set it explicitly:
 
 ```bash
 export NEXUS_VAULT_PATH="/path/to/this/vault"
 ```
 
-Restart Claude Code after setting it.
+Add to `~/.zshrc` or `~/.bashrc` and restart Claude Code.
+
+**Windows:**
+
+Native cmd/PowerShell is not supported. Use one of:
+- **Git Bash** (recommended): install [Git for Windows](https://git-scm.com/download/win), then set Claude Code's shell to Git Bash
+- **WSL**: Windows Subsystem for Linux works fully
+
+Set the env var in your Git Bash profile (`~/.bashrc`):
+```bash
+export NEXUS_VAULT_PATH="/c/path/to/this/vault"
+```
 
 ---
 

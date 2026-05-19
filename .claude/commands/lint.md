@@ -4,7 +4,7 @@ argument-hint: (no arguments needed)
 allowed-tools: Bash(grep:*), Bash(find:*), Bash(cat:*), Bash(ls:*), Bash(wc:*)
 ---
 
-Resolve the vault root: run `echo $NEXUS_VAULT_PATH` and store the result as `$VAULT_ROOT`. If empty, stop and tell the user to set `NEXUS_VAULT_PATH` in their shell profile.
+Resolve the vault root: `VAULT_ROOT="${NEXUS_VAULT_PATH:-$(pwd)}"` — uses the env var if set, otherwise the current working directory. On Windows without Git Bash/WSL, set `NEXUS_VAULT_PATH` explicitly.
 
 Health-check the vault. Do not make changes — report findings and ask which to address.
 
@@ -19,7 +19,7 @@ Find `[[wikilinks]]` in wiki pages that point to files that don't exist.
 Report: links that resolve to nothing — these are stubs waiting to be created.
 
 **Check 3: Inbox backlog**
-Count `.md` files in `$VAULT_ROOT/inbox/`. If more than 5, flag as needing processing.
+Count all files in `$VAULT_ROOT/inbox/`. If more than 5, flag as needing processing.
 
 **Check 4: Stale investigations**
 Find `dev/investigations/` files with `status: open` older than 30 days (check `created` frontmatter). These may need to be shelved.
