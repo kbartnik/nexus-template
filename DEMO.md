@@ -7,10 +7,11 @@ A 5-minute walkthrough of the Nexus vault. Run through this in order.
 ## Before the Audience Arrives
 
 1. Ensure `NEXUS_VAULT_PATH` is set in your shell
-2. Open the vault in Obsidian — navigate to `vault-architecture.canvas` for the opening visual
-3. Open Claude Code in the vault directory
-4. Verify the inbox seed is in place: `ls inbox/`
-5. If running a repeat demo: `/demo-reset`
+2. Run `/demo-reset` — this creates a fresh `demo` branch from the `demo-start` tag (your real vault on `main` is untouched)
+3. Open the vault in Obsidian — you're now on the clean demo branch
+4. Navigate to `vault-architecture.canvas` for the opening visual
+5. Open Claude Code in the vault directory
+6. Verify inbox seed is present: `ls inbox/`
 
 ---
 
@@ -69,18 +70,21 @@ Watch Claude:
 
 ---
 
-## Reset
+## After the Demo
 
 ```
-/demo-reset
+/demo-cleanup
 ```
 
-Vault returns to the `demo-start` state — inbox seed restored, context blanked. Ready for another run.
+Returns to `main` (your real vault), restores any stashed work, and deletes the `demo` branch. Nothing from the demo is left behind.
+
+For a repeat run: `/demo-reset` creates a fresh `demo` branch again from the same clean tag.
 
 ---
 
 ## Notes
 
 - The demo works best when Claude Code is already open and warmed up
-- If anything goes wrong mid-demo, `/demo-reset` and restart from Step 1
+- If anything goes wrong mid-demo, `/demo-reset` creates a fresh branch and you restart from Step 1
 - The canvas is the strongest visual — spend time on it before running commands
+- `/demo-reset` and `/demo-cleanup` are safe to run as many times as needed — they never touch `main`

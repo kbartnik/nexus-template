@@ -46,4 +46,5 @@
 
 | Command | What it does |
 |---------|-------------|
-| `/demo-reset` | Reset vault to clean demo state (`demo-start` tag) |
+| `/demo-reset` | Create a clean `demo` branch from `demo-start` — real data untouched |
+| `/demo-cleanup` | Return to `main`, restore stashed work, delete `demo` branch |
