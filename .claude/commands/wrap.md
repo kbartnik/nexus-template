@@ -9,7 +9,7 @@ End the session. The Stop hook updates timestamps automatically — this command
 **Step 1: Run the session-end script** (handles last-session date + inbox-count):
 
 ```bash
-bash .claude/skills/session-context/session-end.sh
+bash .claude/skills/session-context/scripts/session-end.sh
 ```
 
 **Step 2: Update content fields** in `context.md`:

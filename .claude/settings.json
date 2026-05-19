@@ -28,7 +28,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "V=${NEXUS_VAULT_PATH:-$(pwd)}; [ -f \"$V/.claude/skills/session-context/update-inbox-count.sh\" ] && bash \"$V/.claude/skills/session-context/update-inbox-count.sh\" 2>/dev/null; exit 0",
+            "command": "V=${NEXUS_VAULT_PATH:-$(pwd)}; [ -f \"$V/.claude/skills/session-context/scripts/update-inbox-count.sh\" ] && bash \"$V/.claude/skills/session-context/scripts/update-inbox-count.sh\" 2>/dev/null; exit 0",
             "shell": "bash",
             "async": true
           }
@@ -40,7 +40,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "V=${NEXUS_VAULT_PATH:-$(pwd)}; [ -f \"$V/.claude/skills/session-context/session-start.sh\" ] && bash \"$V/.claude/skills/session-context/session-start.sh\" 2>/dev/null; exit 0",
+            "command": "V=${NEXUS_VAULT_PATH:-$(pwd)}; [ -f \"$V/.claude/skills/session-context/scripts/session-start.sh\" ] && bash \"$V/.claude/skills/session-context/scripts/session-start.sh\" 2>/dev/null; exit 0",
             "shell": "bash"
           }
         ]
@@ -51,7 +51,7 @@
         "hooks": [
           {
             "type": "command",
-            "command": "V=${NEXUS_VAULT_PATH:-$(pwd)}; [ -f \"$V/.claude/skills/session-context/session-end.sh\" ] && bash \"$V/.claude/skills/session-context/session-end.sh\" 2>/dev/null; exit 0",
+            "command": "V=${NEXUS_VAULT_PATH:-$(pwd)}; [ -f \"$V/.claude/skills/session-context/scripts/session-end.sh\" ] && bash \"$V/.claude/skills/session-context/scripts/session-end.sh\" 2>/dev/null; exit 0",
             "shell": "bash",
             "async": true
           }
